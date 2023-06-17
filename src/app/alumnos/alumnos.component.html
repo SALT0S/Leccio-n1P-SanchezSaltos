@@ -1,0 +1,52 @@
+<div>
+  <h2>Agregar Alumno</h2>
+  <mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="nuevoAlumno.nombre" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apellido" [(ngModel)]="nuevoAlumno.apellido" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" [(ngModel)]="nuevoAlumno.email" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="date" placeholder="Fecha de Nacimiento" [(ngModel)]="nuevoAlumno.fechaNacimiento" />
+  </mat-form-field>
+
+  <div class="button-container">
+    <button mat-raised-button (click)="agregarAlumno()">Agregar</button>
+  </div>
+</div>
+
+<!--Tabla de Alumnos-->
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="dataSource">
+
+    <!-- Nombre Column -->
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </mat-cell>
+    </ng-container>
+
+    <!-- Apellido Column -->
+    <ng-container matColumnDef="apellido">
+      <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
+      <mat-cell *matCellDef="let alumno"> {{alumno.apellido}} </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let alumno"> {{alumno.email}} </mat-cell>
+    </ng-container>
+
+    <!-- Fecha de Nacimiento Column -->
+    <ng-container matColumnDef="fechaNacimiento">
+      <mat-header-cell *matHeaderCellDef> Fecha de Nacimiento </mat-header-cell>
+      <mat-cell *matCellDef="let alumno"> {{alumno.fechaNacimiento}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
